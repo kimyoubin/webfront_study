@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        .tooltip {
+            position: absolute;
+            top: -24px;
+            left: 0;
+            display: inline-block;
+            padding: 6px 9px;
+            font-family: 'LGSB';
+            font-size: 14px;
+            color: black;
+            letter-spacing: -1px;
+            background-color: #fff;
+            border: 1px solid black;
+            border-radius: 10px;
+            z-index: 1;
+        }
+        .tooltip::before, .tooltip::after {
+            content: '';
+            position: absolute;
+            display: block;
+        }
+        .tooltip::before {
+            bottom: -10px;
+            left: 40px;
+            border-top: 11px solid #fff;
+            border-left: 11px solid transparent;
+            z-index: 2;
+        }
+        .tooltip::after {
+            bottom: -12px;
+            left: 39px;
+            border-top: 12px solid black;
+            border-left: 13px solid transparent;
+            z-index: 1;
+        }
+    </style>
+</head>
+<body>
+    
+    <div class="tooltip">
+        <dl>
+            <dt>툴팁 타이틀</dt>
+            <dd>툴팁 컨텐츠</dd>
+        </dl>        
+    </div>
+</body>
+</html>
