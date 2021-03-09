@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="./shadowDom2.js" type="application/javascript"></script>
+    <script src="./shadowDom3.js" type="application/javascript"></script>
+    <title>STUDY</title>
+    <style>
+        .wrap {
+            width: 300px;
+        }
+        .box {
+            margin: 10px;
+        }
+    </style>
+</head>
+<body>
+    <h1>뉴스 리스트</h1>
+    <div class="wrap">
+        <!-- news-list -->
+        <news-list
+            fontColor="blue">
+            <slot slot="title">백신 이상반응 226건 추가</slot>
+            <slot slot="press">네이버뉴스</slot>
+            <slot slot="date">2021-03-05</slot>
+        </news-list>
+        <news-list
+            fontColor="blue">
+            <slot slot="title">정부 "내주 적용할 거리두기 조정안 이번주 금요일 발표 목표"</slot>
+            <slot slot="press">네이버뉴스</slot>
+            <slot slot="date">2021-03-08</slot>
+        </news-list>
+
+        <!-- news-content -->
+        <news-content
+            id="content01">
+            <slot slot="news-title">타이틀1입니다.</slot>
+            <slot slot="news-content">컨텐츠1입니다.</slot>
+        </news-content>
+
+        <news-content
+            id="content02">
+            <slot slot="news-title">타이틀2입니다.</slot>
+            <slot slot="news-content">컨텐츠2입니다.</slot>
+        </news-content>
+    </div>
+
+    <script>
+        window.onload = function () {
+            document.querySelector('#list01').addEventListener('click', function () {
+                document.querySelector('.news-modal').classList.add('on');
+            })
+        }
+    </script>
+</body>
+</html>

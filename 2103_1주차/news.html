@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="./newsList.js" type="application/javascript"></script>
+    <script src="./newsModal.js" type="application/javascript"></script>
+    <title>NEWS LIST</title>
+    <style>
+        * { margin: 0; padding: 0;}
+        body {
+            background-color: gray;
+        }
+        .wrap {
+            width: 300px;
+        }        
+    </style>
+</head>
+<body>
+    <h1>뉴스 리스트</h1>
+    <div class="wrap">
+        <!-- news-list -->
+        <news-list
+            id="list"
+            fontColor="blue">
+            <slot slot="title">타이틀1 입니다.</slot>
+            <slot slot="date">2021-03-05</slot>
+        </news-list>
+    </div>
+
+    <!-- news-modal -->
+    <news-modal
+        id="newsModal"
+        bgColor="rgba(0,0,0,.5)">
+        <slot slot="news-title">타이틀1 입니다.</slot>
+        <slot slot="news-content">컨텐츠1 입니다.</slot>
+    </news-modal>
+
+    <script>
+        // 컴포넌트를 불러오는 HTML에 이벤트를 걸어준다.
+        window.onload = function () {
+            document.querySelector('#list').addEventListener('click', function () {
+                // news-modal shadow dom 안에 있는 showModal()함수를 호출한다.
+                document.querySelector('#newsModal').showModal();
+                
+            })
+        }
+    </script>
+</body>
+</html>
