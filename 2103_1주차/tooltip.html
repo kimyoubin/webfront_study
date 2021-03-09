@@ -6,13 +6,20 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="./shadowDom.js" type="application/javascript"></script>
     <title>STUDY</title>
+    <style>
+        .box {
+            margin-top: 120px;
+            margin-left: 50px;
+        }
+    </style>
 </head>
 <body>
     
     <div class="box">
-        <tool-tip>
-            <slot slot="title">툴팁타이틀</slot>
-            <slot slot="content">툴팁컨텐츠</slot>
+        <tool-tip
+            fontColor="red">
+            <slot slot="title">타이틀 영역입니다.</slot>
+            <slot slot="content">컨텐츠 영역입니다.</slot>
         </tool-tip>
 
         <button>마우스를 올려주세용</button>

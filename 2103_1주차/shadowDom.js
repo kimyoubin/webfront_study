@@ -13,14 +13,14 @@ class ToolTip extends HTMLElement {
             </div>
 
             <style>
+                * { margin: 0; padding: 0;}
                 .tooltip {
+                    display: none;
                     position: absolute;
-                    top: 100px;
-                    left: 0;
-                    display: inline-block;
-                    padding: 6px 9px;
+                    top: 40px;
+                    left: 60px;
+                    padding: 10px;
                     font-size: 14px;
-                    color: black;
                     letter-spacing: -1px;
                     background-color: #fff;
                     border: 1px solid black;
@@ -47,15 +47,20 @@ class ToolTip extends HTMLElement {
                     z-index: 1;
                 }
                 .tooltip.on {
-                    display: block;
+                    display: inline-block;
+                }
+                .tooltip dt {
+                    margin-bottom: 3px;
+                    font-weight: bold;
                 }
             </style>
         `;
     }
 
-    // connectedCallback() {
-    //     this.
-    // }
+    connectedCallback() {
+        this.shadowRoot.querySelector('.tooltip dt').style.color
+            = this.getAttribute('fontcolor');
+    }
 }
 
 customElements.define('tool-tip', ToolTip);
