@@ -74,7 +74,7 @@ class NewsModal extends HTMLElement {
         // .news-modal 의 a를 클릭할때 .news-modal에게 hideModal()함수를 bind시킨다.
         this.shadowRoot.querySelector('a').addEventListener('click', this.hideModal.bind(this));
 
-        _newsModal.style.backgroundColor
+        this._newsModal.style.backgroundColor
             = this.getAttribute('bgColor');
         
     }

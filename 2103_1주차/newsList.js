@@ -13,15 +13,8 @@ class NewsList extends HTMLElement {
             <div class="news-list">
                 <dl>
                     <dt><slot name="title"></slot></dt>
-                    <dd><slot name="date"></slot></dd>
+                    <dd><slot name="content"></slot></dd>
                 </dl>
-                
-                <div class="news-content">
-                    <dl>
-                        <dt><slot name="news-title"></slot></dt>
-                        <dd><slot name="news-content"></slot></dd>
-                    </dl>
-                </div>
             </div>
 
             <style>
@@ -54,7 +47,7 @@ class NewsList extends HTMLElement {
     }
 
     /**
-     * 가상 트리가 document 에 연결된후 콜백
+     *  커스텀 엘리먼트가 생성될때 실행된다.
      */
     connectedCallback() {
         this.shadowRoot.querySelector('.news-list dl dt').style.color

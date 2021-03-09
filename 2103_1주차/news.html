@@ -19,13 +19,19 @@
 </head>
 <body>
     <h1>뉴스 리스트</h1>
-    <div class="wrap">
+    <div id="wrap" class="wrap">
         <!-- news-list -->
         <news-list
             id="list"
             fontColor="blue">
-            <slot slot="title">타이틀1 입니다.</slot>
-            <slot slot="date">2021-03-05</slot>
+            <slot 
+                slot="title"
+                class="title-area">
+            </slot>
+            <slot 
+                slot="content"
+                class="content-area">
+            </slot>
         </news-list>
     </div>
 
@@ -33,19 +39,54 @@
     <news-modal
         id="newsModal"
         bgColor="rgba(0,0,0,.5)">
-        <slot slot="news-title">타이틀1 입니다.</slot>
-        <slot slot="news-content">컨텐츠1 입니다.</slot>
+        <slot 
+            slot="news-title"
+            class="title-area">
+        </slot>
+        <slot 
+            slot="news-content"
+            class="content-area">
+        </slot>
     </news-modal>
 
     <script>
+        let tmp = 0;
+        let newsArray = [
+            {
+                title: '타이틀111111',
+                content: '컨텐츠11111'
+            },
+            {
+                title: '타이틀2222',
+                content: '컨텐츠22222'
+            }
+        ]
+
+        let newsTitle = document.querySelectorAll('.title-area');
+        let newsContent = document.querySelectorAll('.content-area');
+
+        let newsList = document.querySelector('#list');
+
+        // console.log(newsTitle);
+
+        newsTitle[0].innerText = newsArray[tmp].title;            
+        
+        for( let i = 0; i < newsArray.length; i++) {            
+            let el = document.querySelector('#list').cloneNode(true);
+
+            el.querySelector('.title-area').text = newsArray[i].title;
+
+            document.querySelector('.wrap').appendChild(el);
+        }        
+
         // 컴포넌트를 불러오는 HTML에 이벤트를 걸어준다.
-        window.onload = function () {
-            document.querySelector('#list').addEventListener('click', function () {
-                // news-modal shadow dom 안에 있는 showModal()함수를 호출한다.
-                document.querySelector('#newsModal').showModal();
-                
-            })
-        }
+        document.querySelector('#list').addEventListener('click', function () {
+            // news-modal shadow dom 안에 있는 showModal()함수를 호출한다.
+            document.querySelector('#newsModal').showModal();           
+            newsTitle[1].innerText = newsArray[tmp].title; 
+            newsContent[1].innerText = newsArray[tmp].content; 
+        })
+
     </script>
 </body>
 </html>
