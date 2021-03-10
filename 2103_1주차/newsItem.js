@@ -1,4 +1,4 @@
-class NewsList extends HTMLElement {
+class NewsItem extends HTMLElement {
     constructor() {
         // 부모 오브젝트의 함수를 호출할때 사용된다. 
         // (자바스크립트 에서는 super는 부모 클래스 생성자를 가리킨다)
@@ -10,7 +10,7 @@ class NewsList extends HTMLElement {
 
         // templete과 같음 style도 scoped
         this.shadowRoot.innerHTML = `
-            <div class="news-list">
+            <div class="news-item">
                 <dl>
                     <dt><slot name="title"></slot></dt>
                     <dd><slot name="content"></slot></dd>
@@ -18,7 +18,7 @@ class NewsList extends HTMLElement {
             </div>
 
             <style>
-                .news-list {
+                .news-item {
                     display: block;
                     padding: 10px;
                     margin-bottom: 10px;
@@ -28,19 +28,20 @@ class NewsList extends HTMLElement {
                     border: 1px solid black;
                     border-radius: 5px;
                 }
-                .news-list.on {
+                .news-item.on {
                     display: inline-block;
                 }
-                .news-list dl {
+                .news-item dl {
                     cursor: pointer;
                 }
-                .news-list dl dt {
-                    margin-bottom: 3px;
+                .news-item dl dt {
+                    margin-bottom: 10px;
                     font-weight: bold;
                 }
-                .news-list dl dd {
+                .news-item dl dd {
+                    margin: 0;
                     font-size: 14px;
-                    text-align: right;
+                    text-align: left;
                 }
             </style>
         `;
@@ -50,9 +51,9 @@ class NewsList extends HTMLElement {
      *  커스텀 엘리먼트가 생성될때 실행된다.
      */
     connectedCallback() {
-        this.shadowRoot.querySelector('.news-list dl dt').style.color
+        this.shadowRoot.querySelector('.news-item dl dt').style.color
             = this.getAttribute('fontcolor');
     }
 }
 
-customElements.define('news-list', NewsList);
+customElements.define('news-item', NewsItem);

@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="./newsItem.js" type="application/javascript"></script>
+    <script src="./newsModal.js" type="application/javascript"></script>
+    <title>NEWS LIST 템플릿화</title>
+    <style>
+        * { margin: 0; padding: 0;}
+        body {
+            background-color: gray;
+        }
+        .wrap {
+            width: 300px;
+        }        
+    </style>
+</head>
+<body>
+    <h1>뉴스 리스트 템플릿화</h1>
+    <div id="wrap" class="wrap">
+        <!-- news-item -->
+        <template id="item">
+            <news-item
+                fontColor="blue">
+                <slot 
+                    slot="title"
+                    class="title-area">
+                </slot>
+                <slot 
+                    slot="content"
+                    class="content-area">
+                </slot>
+            </news-item> 
+        </template>
+    </div>
+
+    <script>
+        let tmp = 0;
+        let newsArray = [
+            {
+                title: '2021.03.10 스터디하는날',
+                content: '저녁 6시30분 대회의실로 모이세요.'
+            },
+            {
+                title: '2021.03.15 스터디하는날',
+                content: '저녁 6시30분 대회의실로 모이세요.'
+            },
+            {
+                title: '2021.03.20 스터디하는날',
+                content: '저녁 6시30분 대회의실로 모이세요.'
+            }
+        ]       
+        
+        newsArray.forEach(function(item, index){
+            
+            // 1. #item을 clone복제한다.(자식 노드도 복제를 하려면 cloneNode(true), default값 false)
+            let itemClone = document.querySelector('#item').cloneNode(true);
+
+            let divElement = document.createElement('div');
+
+            // div안에 itemClone넣어준다.
+            divElement.innerHTML = itemClone.innerHTML;
+            // console.log(divElement);
+
+            divElement.querySelector('.title-area').innerText = newsArray[index].title;
+            divElement.querySelector('.content-area').innerText = newsArray[index].content;
+
+            document.querySelector('.wrap').append(divElement);
+        })         
+
+
+    </script>
+</body>
+</html>

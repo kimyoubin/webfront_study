@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script src="./newsList.js" type="application/javascript"></script>
+    <script src="./newsItem.js" type="application/javascript"></script>
     <script src="./newsModal.js" type="application/javascript"></script>
     <title>NEWS LIST</title>
     <style>
@@ -20,9 +20,9 @@
 <body>
     <h1>뉴스 리스트</h1>
     <div id="wrap" class="wrap">
-        <!-- news-list -->
-        <news-list
-            id="list"
+        <!-- news-item -->
+        <news-item
+            id="item"
             fontColor="blue">
             <slot 
                 slot="title"
@@ -32,7 +32,7 @@
                 slot="content"
                 class="content-area">
             </slot>
-        </news-list>
+        </news-item>
     </div>
 
     <!-- news-modal -->
@@ -53,34 +53,40 @@
         let tmp = 0;
         let newsArray = [
             {
-                title: '타이틀111111',
-                content: '컨텐츠11111'
+                title: '2021.03.10 스터디하는날',
+                content: '저녁 6시30분 대회의실로 모이세요.'
             },
             {
-                title: '타이틀2222',
-                content: '컨텐츠22222'
+                title: '2021.03.15 스터디하는날',
+                content: '저녁 6시30분 대회의실로 모이세요.'
+            },
+            {
+                title: '2021.03.20 스터디하는날',
+                content: '저녁 6시30분 대회의실로 모이세요.'
             }
         ]
 
         let newsTitle = document.querySelectorAll('.title-area');
         let newsContent = document.querySelectorAll('.content-area');
 
-        let newsList = document.querySelector('#list');
-
-        // console.log(newsTitle);
-
         newsTitle[0].innerText = newsArray[tmp].title;            
+        newsContent[0].innerText = newsArray[tmp].content;            
         
-        for( let i = 0; i < newsArray.length; i++) {            
-            let el = document.querySelector('#list').cloneNode(true);
+        newsArray.forEach(function(item, index){
+            console.log(index);
+            // 1. #item을 clone복제한다.(자식 노드도 복제를 하려면 cloneNode(true), default값 false)
+            // 2. 복제하는 #item의 .title-area에 newsArray[i].title을 넣어준다.
+            // 3. .wrap에 append 시키기 (appendChild(보다 append()가 확장성에 뛰어나기 때문에 append()를 사용하는게 좋다.)
+            let itemClone = document.querySelector('#item').cloneNode(true);
+            itemClone.querySelector('.title-area').innerText = newsArray[index].title;
+            itemClone.querySelector('.content-area').innerText = newsArray[index].content;
 
-            el.querySelector('.title-area').text = newsArray[i].title;
-
-            document.querySelector('.wrap').appendChild(el);
-        }        
+            document.querySelector('.wrap').append(itemClone);
+        })         
+        
 
         // 컴포넌트를 불러오는 HTML에 이벤트를 걸어준다.
-        document.querySelector('#list').addEventListener('click', function () {
+        document.querySelector('#item').addEventListener('click', function () {
             // news-modal shadow dom 안에 있는 showModal()함수를 호출한다.
             document.querySelector('#newsModal').showModal();           
             newsTitle[1].innerText = newsArray[tmp].title; 
