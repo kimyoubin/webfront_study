@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <style>
+    strong {
+        color: #d02f2f;
+    }
+
+    .on-vue {
+        color: #1a35dd;
+    }
+
+    .danger  {
+        color: #d02f2f;
+    }
+
+    .info {
+        color: #1a35dd;
+    }
+
+    .success {
+        color: #15ae15;
+    }
+
+    .vuejs-enter-active, .vuejs-leave-active {
+        transition: opacity .5s;
+    }
+
+    .vuejs-enter, .vuejs-leave-to {
+        opacity: 0;
+    }
+    </style>
+</head>
+<body>
+
+<div id="app">
+    <!-- 여기서부터는 vue.js문법이 적용됨 -->
+    <div>{{textArea}}</div>
+    <div>{{textArea2}}</div>
+
+    <button @click="buttonClick">클릭</button>
+</div>
+
+
+<script>
+    new Vue({
+        el: '#app',
+        data: {
+            textArea: '안녕?',
+            textArea2: '바보?',
+            trigger: false
+        },
+        methods: {
+            buttonClick: function() {
+                
+                this.trigger = !this.trigger;
+                console.log(this.trigger);
+
+                if(this.trigger == true) {
+                    this.textArea = '안녕?'
+                } else {
+                    this.textArea = '바보'
+                }
+            }
+        }
+    })
+</script>
+</body>
+</html>

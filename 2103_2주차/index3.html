@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <style>
+    div.on {
+        color: red;
+    }
+    </style>
+</head>
+<body>
+
+<div id="app">
+    <!-- 여기서부터는 vue.js문법이 적용됨 -->
+
+    <div :class="toggleClass">{{textArea}}</div>
+
+    <button @click="buttonClick">클릭</button>
+</div>
+
+
+<script>
+    new Vue({
+        el: '#app',
+        data: {
+            textArea: '안녕?',
+            trigger: false,
+            toggleClass: ''
+        },
+        methods: {
+            buttonClick: function() {
+                if(this.trigger = !this.trigger) {
+                    this.toggleClass = 'on';
+                } else {
+                    this.toggleClass = ''
+                }
+            }
+        }
+    })
+</script>
+</body>
+</html>

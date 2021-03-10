@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <style>
+    div.on {
+        color: red;
+    }
+    </style>
+</head>
+<body>
+
+<div id="app">
+    <!-- 여기서부터는 vue.js문법이 적용됨 -->
+    <!-- for 문법 -->
+    <div v-for="(item, key) in items" :key="key">
+        <!-- 트랜지션 컴포넌트 -->
+        <transition name="vuejs" appear>
+            <span v-if="item.visible" :class="item.class">
+                {{ item.text }}
+            </span>
+        </transition>
+        <button v-on:click="toggle(key)">토글</button>
+    </div>
+
+    <br><br>
+    <hr>
+    <br><br>
+
+    <!-- 이벤트 핸들링 -->
+    <button
+            v-on:click="clickCount++"
+            v-on:keyup.left="clickCount--"
+            v-on:keyup.right="clickCount++">
+        {{ clickCount }}
+    </button>
+</div>
+
+
+<script>
+    new Vue({
+        el: '#app',
+        data: {
+            isVuejs: false,
+            vuejsString: 'Vuejs',
+            items: [
+                {
+                    class: 'danger',
+                    text: '반복문',
+                    visible: true
+                },
+                {
+                    class: 'info',
+                    text: '테스트',
+                    visible: true
+                },
+                {
+                    class: 'success',
+                    text: '입니다',
+                    visible: true
+                }
+            ],
+            clickCount: 0,
+        },
+        methods: {
+            toggle: function (key) {
+                this.items[key].visible = !this.items[key].visible;
+            }
+        }
+    });
+</script>
+</body>
+</html>

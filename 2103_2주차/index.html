@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <style>
+    strong {
+        color: #d02f2f;
+    }
+
+    .on-vue {
+        color: #1a35dd;
+    }
+
+    .danger  {
+        color: #d02f2f;
+    }
+
+    .info {
+        color: #1a35dd;
+    }
+
+    .success {
+        color: #15ae15;
+    }
+
+    .vuejs-enter-active, .vuejs-leave-active {
+        transition: opacity .5s;
+    }
+
+    .vuejs-enter, .vuejs-leave-to {
+        opacity: 0;
+    }
+    </style>
+</head>
+<body>
+<div id="app">
+    <div v-for="(item, key) in items" :key="key">
+        <transition name="vuejs" appear>
+            <span v-if="item.visible" :class="item.class">
+                {{ item.text }}
+            </span>
+        </transition>
+        <button v-on:click="toggle(key)">토글</button>
+    </div>
+</div>
+
+
+<script>
+    new Vue({
+        el: '#app',
+        data: {
+            isVuejs: false,
+            items: [
+                {
+                    class: 'danger',
+                    text: '반복문',
+                    visible: true
+                },
+                {
+                    class: 'danger',
+                    text: '반복문2',
+                    visible: true
+                },
+                {
+                    class: 'danger',
+                    text: '반복문3',
+                    visible: true
+                }
+            ]
+        },
+        methods: {
+            toggle: function (key) {
+                this.items[key].visible = !this.items[key].visible;
+            }
+        }
+    })
+</script>
+</body>
+</html>
