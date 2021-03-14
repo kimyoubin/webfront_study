@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <style>
+        .wrap {
+            position: relative;
+            width: 375px;
+            height: 500px;
+        }
+        button {
+            display: block;
+            width: 200px;
+            height: 30px;
+            margin-bottom: 10px;
+            background-color: rgb(240, 71, 99);
+            border: none;
+            border-radius: 10px;
+        }
+
+        .toast-popup {
+            position: absolute;
+            right: 0;
+            bottom: 20px;
+            left: 0;
+            margin: auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 400px;
+            height: 20px;
+            padding: 20px;
+            background: rgba(0,0,0,.9);
+            border-radius: 10px;
+        }
+
+        .toast-popup a {
+            position: relative;
+            width: 15px;
+            height: 15px;
+            transform: rotate(45deg);
+            text-indent: -9999px;
+        }
+
+        .toast-popup a::before, .toast-popup a::after {
+            content: '';
+            display: block;
+            position: absolute;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            left: 0;
+            margin: auto;
+            background-color: #000;
+        }
+        .toast-popup a::before {
+            width: 1px;
+            height: 100%;
+        }
+        .toast-popup a::after {
+            width: 100%;
+            height: 1px;
+        }
+
+        .toast1-fade-enter-active,
+        .toast2-fade-enter-active,
+        .toast3-fade-enter-active,
+        .toast4-fade-enter-active {
+            transition: all .3s ease-in;
+        }
+
+        .toast1-fade-leave-active,
+        .toast2-fade-leave-active,
+        .toast3-fade-leave-active,
+        .toast4-fade-leave-active {
+            transition: all .3s ease-in-out;
+        }
+
+        .toast1-fade-enter, .toast1-fade-leave-to {
+            transform: translateY(30px);
+            opacity: 0;
+        }
+        .toast2-fade-enter, .toast2-fade-leave-to {
+            transform: translateY(-30px);
+            opacity: 0;
+        }
+        .toast3-fade-enter, .toast3-fade-leave-to {
+            transform: translateX(30px);
+            opacity: 0;
+        }
+        .toast4-fade-enter, .toast4-fade-leave-to {
+            transform: translateX(-30px);
+            opacity: 0;
+        }
+
+    </style>
+</head>
+<body>
+
+<div id="app">
+
+    <div class="wrap">
+        <button
+            v-for="(item, key) in toastData"
+            :key="key"
+            :style="{ backgroundColor : item.bgColor }"
+            @click="toastOpen(item)">{{ item.data }}</button>
+
+        <transition        
+            :name="toastInfo.transitionName">
+            <div 
+                v-if="isToast"
+                :style="{ backgroundColor : toastInfo.style }"
+                class="toast-popup">
+                <div class="content">
+                    {{ toastInfo.content }}
+                </div>
+                <a href="#none" @click="toastClose">닫기</a>
+            </div>
+        </transition>
+    </div>
+
+</div>
+
+
+<script>
+    new Vue({
+        el: '#app',
+        data: {
+            isToast: false,
+            toastData: [
+                {   
+                    data: 'pink toast popup',
+                    bgColor: 'pink',
+                    transitionName: 'toast1-fade'
+                },
+                {   
+                    data: 'burlywood toast popup',
+                    bgColor: 'burlywood',
+                    transitionName: 'toast2-fade'
+                },
+                {   
+                    data: 'yellow toast popup',
+                    bgColor: 'yellow',
+                    transitionName: 'toast3-fade'
+                },
+                {   
+                    data: 'skyblue toast popup',
+                    bgColor: 'skyblue',
+                    transitionName: 'toast4-fade'
+                }              
+            ],
+            toastInfo: [
+                {
+                    content: '',
+                    style: '',
+                    transitionName: ''
+                }
+            ]
+        },
+        methods: {
+            toastOpen: function (item) {
+                this.isToast = true;
+
+                this.toastInfo.content = item.data;
+                this.toastInfo.style = item.bgColor;
+                this.toastInfo.transitionName = item.transitionName;
+            },
+            toastClose: function () {
+                this.isToast = false;
+            }
+        }
+    });
+</script>
+</body>
+</html>

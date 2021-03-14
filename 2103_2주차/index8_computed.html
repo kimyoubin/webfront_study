@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <style>
+
+    </style>
+</head>
+<body>
+
+<div id="app">
+    
+    <button @click="changeMessage">클릭</button>
+    {{ reverseMessage }}
+    {{ reverseMessage }}
+    {{ reverseMessage }}
+</div>
+
+
+<script>
+    new Vue({
+        el: '#app',
+        data: {
+            message: '헬로우',
+        },
+        methods: {
+            changeMessage() {
+                this.message = '김유빈';
+            }
+        },
+        // computed 속성을 쓸때는 데이터 변수처럼 쓸수있음
+        // methods의 차이점
+        // computed는 처음 캐싱 된 저장된 값이 한번에 뿌려줌. 
+        // methods는 여러번 계산하면서 여러번 뿌려줌.
+        computed: {
+            reverseMessage() {
+                return this.message.split('').reverse().join('')
+            }
+        }
+    });
+</script>
+</body>
+</html>
