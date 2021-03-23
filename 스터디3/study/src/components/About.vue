@@ -1,16 +1,16 @@
 <template>
-	<div>
-		About
-		<v-link href="/helloworld">HelloWorld</v-link>
+	<div class="about-page">
+		About page
+		<v-link href="/">HelloWorld</v-link>
 	</div>
 </template>
 
 <script>
-import VLink from './VLink.vue'
+import VLink from '@/components/VLink.vue'
 
 export default {
-    components: { VLink },
 	name: 'About',
+    components: { VLink },	
 	props: {		
 	},
 	data() {
@@ -23,7 +23,11 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-div {
-	color: green
+.about-page {
+	font-size: 20px;
+	width: 100%;
+	height: 100vh;
+	color: black;
+	background-color: #e2c3ff;
 }
 </style>

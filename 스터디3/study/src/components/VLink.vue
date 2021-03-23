@@ -1,7 +1,6 @@
 <template>
-    <div>
+    <div class="v-link">
         <a :href="href"
-			:class="{ active: isActive }"
 			@click="go">
 			<slot></slot>
 		</a>
@@ -12,8 +11,6 @@
 import routes from '../router.js';
 
 export default {
-	name: 'About',
-	components: {routes},
 	props: {
 		href: {
 			type: String,
@@ -40,8 +37,8 @@ export default {
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
-<style lang="scss" scoped>
-div { 
+<style scoped>
+.v-link { 
 	color: pink;
 }
 </style>

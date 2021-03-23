@@ -1,5 +1,5 @@
-import About from "@/compononts/About.vue";
-import HellowWorld from "@/compononts/HelloWorld.vue";
+import About from "@/components/About.vue";
+import HellowWorld from "@/components/HelloWorld.vue";
 
 const routes = {
 	'/': HellowWorld,

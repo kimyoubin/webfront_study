@@ -110,10 +110,12 @@
             :style="{ backgroundColor : item.bgColor }"
             @click="toastOpen(item)">{{ item.data }}</button>
 
-        <transition        
-            :name="toastInfo.transitionName">
+        <transition    
+            :duration="{ enter: 500, leave: 800 }"    
+            :name="toastInfo.transitionName"
+            appear>
             <div 
-                v-if="isToast"
+                v-show="isToast"
                 :style="{ backgroundColor : toastInfo.style }"
                 class="toast-popup">
                 <div class="content">
@@ -169,6 +171,9 @@
                 this.toastInfo.content = item.data;
                 this.toastInfo.style = item.bgColor;
                 this.toastInfo.transitionName = item.transitionName;
+                setTimeout(() => {
+                    this.isToast = false;
+                }, 2500)
             },
             toastClose: function () {
                 this.isToast = false;
