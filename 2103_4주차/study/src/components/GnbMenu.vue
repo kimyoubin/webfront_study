@@ -1,9 +1,11 @@
 <template>
     <div class="gnb-menu">
-        <v-link href="/">index</v-link>
-		<v-link href="/About">About</v-link>
-		<v-link href="/Work">Work</v-link>
-		<v-link href="/Contact">Contact</v-link>
+		<v-link 
+			v-for="(item, key) in gnbMenu" 
+			:key="key"
+			:href="item.href">
+			<slot>{{ item.menu }}</slot>
+		</v-link>
     </div>
 </template>
 
@@ -12,8 +14,28 @@ import VLink from '@/components/VLink.vue'
 
 export default {
 	name: 'gbnMenu',
-	components: { VLink },	
-	props: {
+	components: { VLink},	
+	data() {
+		return {
+			gnbMenu: [
+				{
+					menu: 'index',
+					href: '/'
+				},
+				{
+					menu: 'About',
+					href: '/About'
+				},
+				{
+					menu: 'Work',
+					href: '/Work'
+				},
+				{
+					menu: 'Contact',
+					href: '/Contact'
+				},
+			]
+		}	
 	},
 	computed: {
 	},
