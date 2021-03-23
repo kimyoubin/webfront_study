@@ -1,16 +1,18 @@
 <template>
-	<div class="hello-page">
-		HelloWorld page
-		<v-link href="/About">About</v-link>
+	<div class="index">
+		<gnb-menu />
+		<div class="content">
+			index page	
+		</div>			
 	</div>
 </template>
 
 <script>
-import VLink from '@/components/VLink.vue'
+import GnbMenu from './GnbMenu.vue'
 
 export default {
-	name: 'HelloWorld',
-    components: { VLink },	
+	name: 'index',
+    components: { GnbMenu },	
 	props: {
 	},
 	data() {
@@ -23,11 +25,15 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-.hello-page {
+.index {
 	font-size: 20px;
 	width: 100%;
 	height: 100vh;
 	color: black;
 	background-color: #ffcfc3;
+}
+.content {
+	border-top: 1px solid #000;
+	padding: 40px;
 }
 </style>

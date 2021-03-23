@@ -1,16 +1,18 @@
 <template>
 	<div class="about-page">
-		About page
-		<v-link href="/">HelloWorld</v-link>
+		<gnb-menu />
+		<div class="content">
+			About page	
+		</div>			
 	</div>
 </template>
 
 <script>
-import VLink from '@/components/VLink.vue'
+import GnbMenu from './GnbMenu.vue'
 
 export default {
 	name: 'About',
-    components: { VLink },	
+    components: { GnbMenu },	
 	props: {		
 	},
 	data() {
@@ -29,5 +31,9 @@ export default {
 	height: 100vh;
 	color: black;
 	background-color: #e2c3ff;
+}
+.content {
+	border-top: 1px solid #000;
+	padding: 40px;
 }
 </style>

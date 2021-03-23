@@ -41,4 +41,11 @@ export default {
 .v-link { 
 	color: pink;
 }
+a {
+	text-decoration: none;
+	list-style:none;
+	color: #fff;
+	font-size: 18px;
+	margin: 0 30px;
+}
 </style>
