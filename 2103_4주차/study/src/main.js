@@ -1,18 +1,17 @@
 import Vue from 'vue'
+import VueRouter from 'vue-router'
 import routes from './router.js'
+import App from './App.vue'
 
-const app = new Vue({
-	data: {
-		currentRoute: window.location.pathname
-	},
-	computed: {
-		ViewComponent() {
-			return routes[this.currentRoute];
-		}
-	},
-	render(h) { return h(this.ViewComponent); }
-}).$mount('#app');
+Vue.use(VueRouter);
 
-window.addEventListener('popstate', () => {
-	app.currentRoute = window.location.pathname;
-});
+const router = new VueRouter({
+	mode: 'history',
+	routes
+})
+
+new Vue({
+	router,
+	renter: h => h(App)
+}).$mount('#app')
+

@@ -1,10 +1,9 @@
 <template>
-    <div class="v-link">
-        <a :href="href"
+        <!-- <a :href="href"
 			@click="go">
 			<slot></slot>
-		</a>
-    </div>
+		</a> -->
+		<router-link to="/Index">Index Page</router-link>
 </template>
 
 <script>
