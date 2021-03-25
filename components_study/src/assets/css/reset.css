@@ -38,3 +38,5 @@ input[type="password"]:hover,
 textarea:hover{outline:none}
 input[type=text]::-ms-clear {display:none;}
 select::-ms-expand {display:none}
+
+input[type=password] {font-family: arial,tahoma,verdana,'Apple Gothic',sans-serif;}
