@@ -1,0 +1,21 @@
+@font-face {
+    font-family:'NS';
+    src:url('../font/NS.eot');
+    src:url('../font/NS.eot?#iefix') format('embedded-opentype'), url('../font/NS.woff') format('woff'), url('../font/NS.ttf') format('truetype');
+    font-weight:normal;
+    font-style:normal; 
+}
+@font-face {
+    font-family:'NSBold';
+    src:url('../font/NSBold.eot');
+    src:url('../font/NSBold.eot?#iefix') format('embedded-opentype'), url('../font/NSBold.woff') format('woff'), url('../font/NSBold.ttf') format('truetype');
+    font-weight:bold;
+    font-style:normal; 
+}
+@font-face {
+    font-family:'NSEBold';
+    src:url('../font/NSEBold.eot');
+    src:url('../font/NSEBold.eot?#iefix') format('embedded-opentype'), url('../font/NSEBold.woff') format('woff'), url('../font/NSEBold.ttf') format('truetype');
+    font-weight:bold;
+    font-style:normal; 
+}
