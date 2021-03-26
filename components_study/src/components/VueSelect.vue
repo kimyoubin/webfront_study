@@ -1,7 +1,7 @@
 <template>
     <div 
         :tabindex="tabIndex"
-        @blur="blurEvent"        
+        @blur="isActive = false"        
         class="selectbox">
         <button 
             @click="toggleEvent"
@@ -66,7 +66,7 @@ export default {
 
 .selectbox button {
     position: relative;
-    border: 1px solid #aeaeae;
+    border: 1px solid #8e8e8e;
 }
 
 .selectbox button.on::after{
@@ -88,9 +88,9 @@ export default {
 
 .selectbox .selectbox-option {
     max-height: 200px;
-    border-left: 1px solid #aeaeae;
-    border-right: 1px solid #aeaeae;
-    border-bottom: 1px solid #aeaeae;
+    border-left: 1px solid #8e8e8e;
+    border-right: 1px solid #8e8e8e;
+    border-bottom: 1px solid #8e8e8e;
     overflow-y: auto;
 }
 

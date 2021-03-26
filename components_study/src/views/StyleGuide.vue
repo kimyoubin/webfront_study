@@ -1,10 +1,9 @@
 <template>
 	<div class="styleGuide">
 		<h1>StyleGuide</h1>
-		
 		<div class="wrap">
 			<h2>input text type</h2>
-			<vue-input 
+			<vue-input 			
 				type="text"
 				name="input-text"
 				id="input-text"
@@ -22,7 +21,8 @@
 				id="input-email"
 				value=""
 				placeholder="E-mail을 입력해주세요."/>
-
+			
+			<p>p 영역 : {{ lovingVue }}</p>
 		</div>
 
 		<div class="wrap">
@@ -42,8 +42,12 @@ export default {
 	name: 'StyleGuide',
 	data() {
 		return {
+			lovingVue: 'ddd',
 			selectedValue: '선택해주세요.',
 			listData: [
+				{
+					option: 'all',
+				},
 				{
 					option: 'option1',
 				},
@@ -57,10 +61,10 @@ export default {
 					option: 'option4',
 				},
 				{
-					option: 'option4',
+					option: 'option5',
 				},
 				{
-					option: 'option4',
+					option: 'option6',
 				}
 			]
 		}
