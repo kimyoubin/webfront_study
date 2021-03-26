@@ -1,15 +1,22 @@
 <template>
-    <div class="selectbox">
-        <button @click="toggleEvent">{{ selected }}</button>
-        <ul
+    <div 
+        :tabindex="tabIndex"
+        @blur="blurEvent"        
+        class="selectbox">
+        <button 
+            @click="toggleEvent"
+            :class="{'on' : isActive}">{{ selected }}</button>
+        <div 
             v-if="isActive"
-            class="selectbox">
-            <!-- li 클릭시 item.option data가 button에 bind 돼야함 -->
-            <li 
-                v-for="(item, key) in items"
-                :key="key"
-                @click="selectOption(item)">{{ item.option }}</li>
-        </ul>
+            class="selectbox-option">
+            <ul>              
+                <!-- li 클릭시 selected를 item.option data로 바꿔줌 -->
+                <li 
+                    v-for="(item, key) in items"
+                    :key="key"
+                    @click="selectOption(item)">{{ item.option }}</li>
+            </ul>
+        </div>
     </div>
 </template>
 
@@ -17,22 +24,26 @@
 export default {
 	name: 'VueSelect',
 	props: [
-        'items', 'selected'
+        'items',
     ],
 	data() {
 		return {
-			isActive: false
+			isActive: false,
+            selected: '선택해주세요',
+            tabIndex: 0
 		}
 	},
     methods: {
-        toggleEvent: function () {
-            
+        toggleEvent: function () {            
             this.isActive = !this.isActive
         },
         selectOption: function(item) {
             console.log(item);
-            console.log(this.selected);
-            item.option = this.selected
+            this.selected = item.option;
+            this.isActive = false;
+        },
+        blurEvent: function () {
+            console.log('닫혀라');
         }
     }
 }
@@ -40,7 +51,8 @@ export default {
 
 <style scoped>
 .selectbox {
-    width: 100%;    
+    width: 100%;   
+    position: relative;
 }
 
 .selectbox button, .selectbox li {
@@ -53,21 +65,56 @@ export default {
 }
 
 .selectbox button {
+    position: relative;
     border: 1px solid #aeaeae;
 }
 
-.selectbox ul {
-
+.selectbox button.on::after{
+    transform: rotate(180deg);
 }
 
-.selectbox ul li {
+.selectbox button::after {
+    content: '';
+    display: block;
+    position: absolute;
+    top: 20px;
+    right: 10px;
+    width: 0;
+	height: 0;
+	border-top: 7px solid #000;
+	border-left: 7px solid transparent;
+	border-right: 7px solid transparent;
+}
+
+.selectbox .selectbox-option {
+    max-height: 200px;
+    border-left: 1px solid #aeaeae;
+    border-right: 1px solid #aeaeae;
+    border-bottom: 1px solid #aeaeae;
+    overflow-y: auto;
+}
+
+.selectbox .selectbox-option::-webkit-scrollbar {
+	width: 7px;
+    background-color: transparent;
+}
+
+.selectbox .selectbox-option::-webkit-scrollbar-thumb {
+	width: 7px;
+    border-radius: 5px;
+    background-color: #000;
+}
+
+.selectbox ul li {    
     display: flex;
     align-items: center;
     width: 100%;
     height: 50px;
-    border: 1px solid #aeaeae;
-    border-top: 0;
     cursor: pointer;
+}
+
+.selectbox ul li:hover {
+    background-color: #f3f3f3;
 }
 
 </style>

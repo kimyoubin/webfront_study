@@ -27,7 +27,9 @@
 
 		<div class="wrap">
 			<h2>selectbox</h2>
-			<vue-select :items="listData"/>
+			<vue-select 
+				:items="listData"
+				:selected="selectedValue"/>
 		</div>
 	</div>
 </template>
@@ -40,18 +42,25 @@ export default {
 	name: 'StyleGuide',
 	data() {
 		return {
+			selectedValue: '선택해주세요.',
 			listData: [
 				{
-					option: '선택하세요',
+					option: 'option1',
 				},
 				{
-					option: '선택하세요2',
+					option: 'option2',
 				},
 				{
-					option: '선택하세요3',
+					option: 'option3',
 				},
 				{
-					option: '선택하세요4',
+					option: 'option4',
+				},
+				{
+					option: 'option4',
+				},
+				{
+					option: 'option4',
 				}
 			]
 		}
