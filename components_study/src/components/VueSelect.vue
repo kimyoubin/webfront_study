@@ -23,14 +23,21 @@
 <script>
 export default {
 	name: 'VueSelect',
-	props: [
-        'items',
-    ],
+	props: {
+        items: {
+            type: Array,
+            require: true
+        },
+        tabIndex: {
+            type: Number,
+            require: false,
+            default: 0
+        }
+    },
 	data() {
 		return {
 			isActive: false,
             selected: '선택해주세요',
-            tabIndex: 0
 		}
 	},
     methods: {
@@ -87,10 +94,15 @@ export default {
 }
 
 .selectbox .selectbox-option {
+    position: absolute;
+    top: 50px;
+    left: 0;
+    right: 0;
     max-height: 200px;
     border-left: 1px solid #8e8e8e;
     border-right: 1px solid #8e8e8e;
     border-bottom: 1px solid #8e8e8e;
+    background-color: #fff;
     overflow-y: auto;
 }
 

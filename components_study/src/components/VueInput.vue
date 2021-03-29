@@ -7,6 +7,7 @@
 		:value="value"
 		@click="isActive = true"
 		@blur="isActive = false"
+		@input="change" 
 		:class="{ 'on' : isActive }">
 </template>
 
@@ -14,6 +15,7 @@
 export default {
 	name: 'VueInput',
 	props: [
+		// 부모에서 v-model로 던진값을 value로 받음
 		'type', 'placeholder', 'name', 'id', 'value', 'checked'
 	],
 	data() {
@@ -22,6 +24,11 @@ export default {
 		}
 	},
 	methods: {
+		// 부모에게 input이벤트를 던저준다.
+		// 반드시 input이벤트여야 함, v-model은 input이라는 이벤트로 받기 때문
+		change: function($event) {
+			this.$emit('input', $event.target.value)
+		}
 	}
 }
 </script>
