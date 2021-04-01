@@ -1,7 +1,7 @@
 <template>
     <div 
         :tabindex="tabIndex"
-        @blur="isActive = false"        
+        @blur="isActive = false;"        
         class="selectbox">
         <button 
             @click="toggleEvent"
@@ -49,9 +49,11 @@ export default {
             this.selected = item.option;
             this.isActive = false;
         },
-        blurEvent: function () {
-            console.log('닫혀라');
-        }
+        // blurEvent: function () {
+        //     this.
+        //     console.log('닫혀라');
+            
+        // }
     }
 }
 </script>
