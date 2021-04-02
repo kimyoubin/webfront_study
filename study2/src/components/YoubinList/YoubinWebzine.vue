@@ -2,7 +2,8 @@
   <ul>
     <li 
       v-for="(item, key) in items"
-      :key="key">
+      :key="key"
+      @click="$emit('click', item)">
       <div
         :style="{ backgroundImage : 'url(' + item.src + ')' }" 
         class="img-area"
