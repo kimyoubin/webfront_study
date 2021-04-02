@@ -17,9 +17,12 @@
 export default {
   name: 'YoubinGallery',
   props: {
-      items: Array,
-      src: String,
-      alt: String,
+    items: Array,
+    src: String,
+    alt: String,
+  },
+  created() {
+    console.log('Gallery component');
   }
 }
 </script>

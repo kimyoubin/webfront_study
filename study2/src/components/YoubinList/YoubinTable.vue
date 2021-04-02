@@ -27,8 +27,11 @@
 export default {
   name: 'YoubinTable',
   props: {
-      items: Array   
+    items: Array   
   },
+  created() {
+    console.log('Table component');
+  }
 
 }
 </script>

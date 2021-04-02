@@ -20,6 +20,9 @@ export default {
     items: Array,
     src: String,
     alt: String,
+  },
+  created() {
+    console.log('Webzine component');
   }
 }
 </script>

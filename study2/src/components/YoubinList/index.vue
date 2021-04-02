@@ -1,11 +1,30 @@
 <template>
   <div>
-    <youbin-gallery 
+    
+    
+    <button
+      @click="changeList('YoubinGallery')"
+      >갤러리형</button>
+    <button
+      @click="changeList('YoubinTable')"
+      >테이블형</button>
+    <button
+      @click="changeList('YoubinWebzine')"
+      >웹진형</button>
+    
+    <!--       
+      1. v-bind:is="컴포넌트명" : vue에서 동적으로 컴포넌트를 생성하며 전환효과를 주기 위해 사용할 수 있다.
+    -->
+      <component 
+      :is="component" 
+      :items="listData" />
+
+    <!-- <youbin-gallery 
       :items="listData"/>
     <youbin-table 
       :items="listData"/>
     <youbin-webzine
-      :items="listData"/>
+      :items="listData"/> -->
   </div>
 </template>
 
@@ -21,8 +40,9 @@ export default {
   props: {
       
   },
-    data() {
+  data() {
     return {
+      component: 'YoubinGallery',
       listData: [
         {
           number: '1',
@@ -71,10 +91,22 @@ export default {
         }
       ]
     }
+  },
+  methods: {
+    changeList: function (componentName) {
+      // 버튼을 클릭할때마다 컴포넌트 이름을 인자로 넘겨받는다.
+      this.component = componentName
+    }
   }
 }
 </script>
 
 <style scoped lang="scss">
-
+button {
+  width: 100px;
+  height: 50px;
+  margin-right: 10px;
+  color: #fff;
+  background-color: #000;
+}
 </style>
