@@ -28,8 +28,17 @@
     <keep-alive>
       <component 
         :is="component" 
-        :items="listData" />
+        :items="listData" 
+        @click="ModalOn"/>
     </keep-alive> 
+
+    <youbin-modal
+      v-if="modalActive"
+      :activeInfo="activeInfo"
+      @close="modalClose">
+      <template slot="title"></template>
+      <template slot="writer"></template>
+    </youbin-modal>
   </div>
 </template>
 
@@ -37,9 +46,10 @@
 import YoubinGallery from './YoubinGallery.vue'
 import YoubinTable from './YoubinTable.vue'
 import YoubinWebzine from './YoubinWebzine.vue'
+import YoubinModal from '@/components/YoubinModal/index.vue'
 
 export default {
-  components: { YoubinGallery, YoubinTable, YoubinWebzine },
+  components: { YoubinGallery, YoubinTable, YoubinWebzine, YoubinModal },
   name: 'YoubinList',  
   props: {
       
@@ -47,6 +57,8 @@ export default {
   data() {
     return {
       component: 'YoubinGallery',
+      modalActive: false,
+      activeInfo: {},
       listData: [
         {
           number: '1',
@@ -105,6 +117,14 @@ export default {
     changeList: function (componentName) {
       // 버튼을 클릭할때마다 컴포넌트 이름을 인자로 넘겨받는다.
       this.component = componentName
+    },
+    ModalOn: function (targetObj) {
+      this.modalActive = !this.modalActive
+      this.activeInfo = targetObj
+
+    },
+    modalClose: function () {
+      this.modalActive = false
     }
   }
 }

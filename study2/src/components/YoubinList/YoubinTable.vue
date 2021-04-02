@@ -15,7 +15,7 @@
         :key="key">
         <td>{{ item.number }}</td>
         <td>{{ item.title }}</td>
-         <td>{{ item.writer }}</td>
+        <td>{{ item.writer }}</td>
         <td>{{ item.date }}</td>
         <td>{{ item.views }}</td>
       </tr>
