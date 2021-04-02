@@ -3,11 +3,13 @@
     <li 
       v-for="(item, key) in items"
       :key="key">
-      <img :src="item.src" :alt="item.alt">
+      <div
+        :style="{ backgroundImage : 'url(' + item.src + ')' }" 
+        class="img-area"
+      ></div>
       <dl>
         <dt>{{ item.title }}</dt>
         <dd>{{ item.date }}</dd>
-        <dd>{{ item.views }}</dd>
       </dl>
     </li>
   </ul>
@@ -17,9 +19,15 @@
 export default {
   name: 'YoubinWebzine',
   props: {
-    items: Array,
-    src: String,
-    alt: String,
+    items: {
+      type: Array
+    },
+    src: {
+      type: String
+    },
+    alt: {
+      type: String
+    },
   },
   created() {
     console.log('Webzine component');
@@ -34,12 +42,20 @@ ul {
   font-size: 14px;
   li {
     position: relative;
-    width: calc((100% - 50px) / 5);
-    padding: 10px;
-    border: 1px solid #000;
-    img {
+    width: calc((100% - 100px) / 5);
+    border-radius: 30px;
+    overflow: hidden;
+    cursor: pointer;
+    transition: all .4s;
+    &:hover {
+      transform: translateY(-10px);
+      box-shadow: 10px 10px 15px rgba(0,0,0,.3);
+    }
+    .img-area {
       width: 100%;
-      margin-bottom: 10px;
+      height: 300px;
+      background-size: cover;
+      background-position: center;
     }
   }
 }
@@ -48,7 +64,16 @@ dl {
   top: 20px;
   left: 20px;
   color: #fff;
-  dt { font-size: 15px; font-weight: bold;}
-  dd {}
+  dt { 
+    margin-bottom: 10px;
+    font-size: 20px; 
+    font-weight: bold;
+  }
+  dd {
+    font-size: 15px;
+    &.date {
+      margin-bottom: 5px;
+    }
+  }
 }
 </style>

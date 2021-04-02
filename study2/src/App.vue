@@ -12,5 +12,9 @@ import YoubinList from '@/components/YoubinList/index.vue'
   }
 </script>
 <style lang="scss">
-
+#app {
+  width: 100%;
+  height: 100vh;
+  background-color: #f6f6f6;
+}
 </style>

@@ -3,11 +3,14 @@
     <li 
       v-for="(item, key) in items"
       :key="key">
-      <img :src="item.src" :alt="item.alt">
+      <span class="mark">{{ item.mark }}</span>
+      <div class="img-area">
+        <img :src="item.src" :alt="item.alt">
+      </div>
       <dl>
-        <dt>{{ item.title }}</dt>
-        <dd>{{ item.date }}</dd>
-        <dd>{{ item.views }}</dd>
+        <dt>제목 : {{ item.title }}</dt>
+        <dd class="date">날짜 : {{ item.date }}</dd>
+        <dd class="views">조회수 : {{ item.views }}</dd>
       </dl>
     </li>
   </ul>
@@ -17,9 +20,15 @@
 export default {
   name: 'YoubinGallery',
   props: {
-    items: Array,
-    src: String,
-    alt: String,
+    items: {
+      type: Array
+    },
+    src: {
+      type: String
+    },
+    alt: {
+      type: String
+    },
   },
   created() {
     console.log('Gallery component');
@@ -33,20 +42,59 @@ ul {
   justify-content: space-between;
   font-size: 14px;
   li {
-    width: calc((100% - 50px) / 5);
-    padding: 10px;
-    border: 1px solid #000;
-    img {
-      width: 100%;
-      height: 70%;
-      margin-bottom: 10px;
+    position: relative;
+    width: calc((100% - 100px) / 5);
+    border: 1px solid #c6c6c6;
+    background-color: #fff;
+    border-radius: 20px;
+    overflow: hidden;
+    cursor: pointer;
+    &:hover {
+      img {
+        transform: scale(1.1);
+      }
     }
+    .mark {
+      position: absolute;
+      top: 0;
+      left: 30px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 30px;
+      height: 45px;
+      color: #fff;
+      font-size: 15px;
+      font-weight: bold;
+      background-color: #f5c53b;
+      z-index: 1;
+    }
+    .img-area { 
+      height: 70%;
+      overflow: hidden;
+      img {
+        width: 100%;       
+        height: 100%; 
+        transition: all .4s;
+      }
+    }
+    
   }
 }
 dl {
-  padding-top: 10px;
-  border-top: 1px solid #000;
-  dt { font-size: 15px; font-weight: bold;}
-  dd {}
+  padding: 20px;
+  dt { 
+    margin-bottom: 10px;
+    font-size: 18px; 
+    font-weight: bold;
+  }
+  dd {
+    &.date {
+      margin-bottom: 20px;
+    }
+    &.views {
+      text-align: right;
+    }
+  }
 }
 </style>

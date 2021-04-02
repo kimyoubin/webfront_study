@@ -27,7 +27,9 @@
 export default {
   name: 'YoubinTable',
   props: {
-    items: Array   
+    items: {
+      type: Array
+    }
   },
   created() {
     console.log('Table component');
@@ -41,6 +43,7 @@ export default {
 table {
   width: 100%;
   font-size: 14px;
+  text-align: center;
   border-collapse: collapse;
   border-top: 1px solid #000;
   border-left: 1px solid #000;
@@ -48,6 +51,17 @@ table {
     padding: 10px;
     border-right: 1px solid #000; 
     border-bottom: 1px solid #000; 
+  }
+  th {
+    background-color: #f3f3f3;
+  }
+  tr {
+    background-color: #fff;
+    transition: all .4s;
+    cursor: pointer;
+    &:hover {
+      background-color: #f3f3f3;
+    }
   }
 }
 </style>
