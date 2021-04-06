@@ -1,6 +1,6 @@
 <template>
   <div 
-    v-if="modalShow"
+
     @click.self="$emit('close')"
     class="modal">
     <div class="modal-content">

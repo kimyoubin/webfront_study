@@ -19,8 +19,11 @@
       @click="modalActive = true"
     ></youbin-list>
     
+    <!-- 
+      
+    -->
     <youbin-modal
-      :modalShow.sync="modalActive"
+      v-if="modalActive"
       @close="modalClose">
       <dl>
         <dt>제목 : {{ modalData.title }}</dt>
