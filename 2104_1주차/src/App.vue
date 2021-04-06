@@ -1,29 +1,24 @@
 <template>
   <div id="app">
 
+    <!-- 1. button을 클릭할때마다 listType을 string값으로 넘겨준다. -->
     <ul class="btn-area">
       <li><button @click="changeList('gallery')">갤러리형</button></li>
       <li><button @click="changeList('table')">테이블형</button></li>
       <li><button @click="changeList('webzine')">웹진형</button></li>
     </ul>   
 
-    <!--       
-      1. v-bind:is="컴포넌트명" : vue에서 동적으로 컴포넌트를 생성하며 전환효과를 주기 위해 사용할 수 있다.
-      2. keep-alive : 비활성 컴포넌트 인스턴스를 파괴하지 않고 캐시한다. 
-      3. keep-alive 적용 전 : 전환이 일어날때마다 생성과 소멸을 반복하며 data가 유지되지 않음! 
-        그래서 전환이 일어날때마다 번쩍거리는 느낌이 있음.
-      4. keep-alive 적용 후 : created에 캐시되어 다른 컴포넌트에 갔다와도 페이지의 새로고침이 발생하기 전까지 data가 유지 된다.
-        그래서 전환이 일어날때마다 번쩍거리지 않는다!
+    <!-- 
+      2. Youbin에서 props으로 넘겨준 type을 listType값으로 바인딩해준다. 
+      4. 자식에서 받은 modalData를 v-model="modalData"로 연결해준다.
     -->
-    <keep-alive>
-      <youbin-list
-        :type="listType" 
-        :items="listData" 
-        v-model="modalData" 
-        @click="modalActive = true"
-      ></youbin-list>
-    </keep-alive> 
-
+    <youbin-list
+      :type="listType" 
+      :items="listData" 
+      v-model="modalData" 
+      @click="modalActive = true"
+    ></youbin-list>
+    
     <youbin-modal
       :modalShow.sync="modalActive"
       @close="modalClose">
@@ -131,7 +126,8 @@ export default {
   },
   methods: {
     changeList: function (type) {
-      // 버튼을 클릭할때마다 인자로 넘겨받는다.
+      // 버튼을 클릭할때마다 string값을 넘겨준다.
+      console.log('type ::', type);
       this.listType = type
     },
     // ModalOn: function () {
