@@ -1,6 +1,10 @@
 <template>
   <ul>
-    <!-- click 할때 $emit('input', item)을 넘기면서 클릭한 item의 데이타를 v-model에 넘겨준다. -->
+    <!-- 
+      @click
+      1. 'input' : input이벤트를 부모에게 item과 함께 전달해준다. 
+      2. 'click' : modal을 띄위기 위한 click이벤트를 부모에게 전달시킨다.
+    -->
     <li 
       v-for="(item, key) in items"
       :key="key"

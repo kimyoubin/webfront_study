@@ -10,6 +10,11 @@
       </tr>
     </thead>
     <tbody>
+      <!-- 
+        @click
+        1. 'input' : input이벤트를 부모에게 item과 함께 전달해준다. 
+        2. 'click' : modal을 띄위기 위한 click이벤트를 부모에게 전달시킨다.
+      -->
       <tr 
         v-for="(item, key) in items"
         :key="key"

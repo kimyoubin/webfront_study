@@ -18,10 +18,7 @@
       v-model="modalData" 
       @click="modalActive = true"
     ></youbin-list>
-    
-    <!-- 
-      
-    -->
+
     <youbin-modal
       v-if="modalActive"
       @close="modalClose">
@@ -50,29 +47,6 @@ export default {
       listType: 'gallery',
       modalActive: false,
       modalData: {},
-      columns: [
-        {
-          label: '번호',
-          value: 'number'
-        },
-        {
-          label: '제목',
-          value: 'title'
-        },
-        {
-          label: '글쓴이',
-          value: 'writer'
-        },
-        {
-          label: '날짜',
-          value: 'date'
-        },
-        {
-          label: '조회수',
-          value: 'views'
-        }
-      ],
-
       listData: [
         {
           number: '1',
@@ -133,15 +107,9 @@ export default {
       console.log('type ::', type);
       this.listType = type
     },
-    // ModalOn: function () {
-      
-    // },
     modalClose: function () {
       this.modalActive = false
     },
-    dataChange: function (value) {
-      this.list = value;
-    }
   }
 }
 </script>
