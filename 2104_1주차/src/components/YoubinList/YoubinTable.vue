@@ -13,7 +13,7 @@
       <tr 
         v-for="(item, key) in items"
         :key="key"
-        @click="$emit('click', item)">
+        @click="$emit('input', item); $emit('click')">
         <td>{{ item.number }}</td>
         <td>{{ item.title }}</td>
         <td>{{ item.writer }}</td>

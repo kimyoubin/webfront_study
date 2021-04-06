@@ -3,7 +3,7 @@
     <li 
       v-for="(item, key) in items"
       :key="key"
-      @click="$emit('click', item)">
+      @click="$emit('input', item); $emit('click')">
       <span class="mark">{{ item.mark }}</span>
       <div class="img-area">
         <img :src="item.src" :alt="item.alt">

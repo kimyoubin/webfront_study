@@ -1,17 +1,11 @@
 <template>
   <div 
+    v-if="modalShow"
     class="modal">
     <div class="modal-content">
       <button
         @click="$emit('close')">닫기</button>
-      <dl>
-        <dt>제목 : {{ activeInfo.title }}</dt>
-        <dd>작성자 : {{ activeInfo.writer }}</dd>
-      </dl>
-      <div 
-        class="img-area"
-        :style="{ backgroundImage : 'url(' + activeInfo.src + ')'}"
-      ></div>
+      <slot></slot>
     </div>
   </div>
 </template>
@@ -23,8 +17,9 @@ export default {
     items: {
       type: Array
     },
-    activeInfo: {
-      type: Object,
+    modalShow: {
+      type: Boolean,
+      default: false
     }
   },
   data() {
