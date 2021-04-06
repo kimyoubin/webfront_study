@@ -2,21 +2,9 @@
   <div id="app">
 
     <ul class="btn-area">
-      <li>
-        <button
-        @click="changeList('YoubinGallery')"
-      >갤러리형</button>
-      </li>
-      <li>
-        <button
-        @click="changeList('YoubinTable')"
-      >테이블형</button>
-      </li>
-      <li>
-        <button
-        @click="changeList('YoubinWebzine')"
-      >웹진형</button>
-      </li>
+      <li><button @click="changeList('gallery')">갤러리형</button></li>
+      <li><button @click="changeList('table')">테이블형</button></li>
+      <li><button @click="changeList('webzine')">웹진형</button></li>
     </ul>   
 
     <!--       
@@ -28,11 +16,12 @@
         그래서 전환이 일어날때마다 번쩍거리지 않는다!
     -->
     <keep-alive>
-      <div 
-        :is="component" 
-        :items="listData"
-        v-model="modalData"
-        @click="modalActive = true"></div>
+      <youbin-list
+        :type="listType" 
+        :items="listData" 
+        v-model="modalData" 
+        @click="modalActive = true"
+      ></youbin-list>
     </keep-alive> 
 
     <youbin-modal
@@ -41,10 +30,8 @@
       <dl>
         <dt>제목 : {{ modalData.title }}</dt>
         <dd>작성자 : {{ modalData.writer }}</dd>
+        <dd><img :src="modalData.src"></dd>
       </dl>
-      <div 
-        class="img-area"
-      ></div>
     </youbin-modal>
 
   </div>
@@ -52,20 +39,17 @@
 
 <script>
 import YoubinList from '@/components/YoubinList/index.vue'
-import YoubinGallery from '@/components/YoubinList/YoubinGallery.vue'
-import YoubinTable from '@/components/YoubinList/YoubinTable.vue'
-import YoubinWebzine from '@/components/YoubinList/YoubinWebzine.vue'
 import YoubinModal from '@/components/YoubinModal/index.vue'
 
 export default {
-  components: { YoubinList, YoubinGallery, YoubinTable, YoubinWebzine, YoubinModal },
+  components: { YoubinList, YoubinModal },
   name: 'app',  
   props: {
       
   },
   data() {
     return {
-      component: 'YoubinGallery',
+      listType: 'gallery',
       modalActive: false,
       modalData: {},
       columns: [
@@ -146,9 +130,9 @@ export default {
     }
   },
   methods: {
-    changeList: function (componentName) {
-      // 버튼을 클릭할때마다 컴포넌트 이름을 인자로 넘겨받는다.
-      this.component = componentName
+    changeList: function (type) {
+      // 버튼을 클릭할때마다 인자로 넘겨받는다.
+      this.listType = type
     },
     // ModalOn: function () {
       

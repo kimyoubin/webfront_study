@@ -1,6 +1,7 @@
 <template>
   <div 
     v-if="modalShow"
+    @click.self="$emit('close')"
     class="modal">
     <div class="modal-content">
       <button
@@ -33,7 +34,7 @@ export default {
 }
 </script>
 
-<style scoped lang="scss">
+<style lang="scss">
 .modal {
   position: fixed;
   top: 0;
@@ -67,15 +68,11 @@ export default {
         font-weight: bold;
       }
       dd {
+        margin-bottom: 10px;
         font-size: 14px;
       }
     }
-    .img-area {
-      width: 400px;
-      height: 400px;
-      background-size: cover;
-      background-position: center;
-    }
+
   }
 }
 </style>

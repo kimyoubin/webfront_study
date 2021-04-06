@@ -1,13 +1,25 @@
 <template>
-  <div class="index">   
+  <div>   
 
     <youbin-gallery 
+      v-model="modalData"
+      @input="$emit('input', modalData)"
+      :items="items"
+      v-if="type === 'gallery'"
       @click="$emit('click')" />
 
     <youbin-table
+      v-model="modalData"
+      @input="$emit('input', modalData)"
+      :items="items"
+      v-else-if="type === 'table'"
       @click="$emit('click')" />
 
     <youbin-webzine
+      v-model="modalData"
+      @input="$emit('input', modalData)"
+      :items="items"
+      v-else-if="type === 'webzine'"
       @click="$emit('click')" />
 
   </div>
@@ -21,8 +33,22 @@ import YoubinWebzine from '@/components/YoubinList/YoubinWebzine.vue'
 export default {
   components: { YoubinGallery, YoubinTable, YoubinWebzine },
   name: 'YoubinList',
-  props: {      
+  props: {   
+    type: {
+      type: String,
+      default: 'gallery'
+    },
+    items: {
+      type: Array,
+    }
   },
+  data() {
+    return {
+      modalData: {}
+    }
+  },
+  methods: {
+  }
 }
 </script>
 

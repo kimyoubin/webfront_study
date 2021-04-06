@@ -1,6 +1,6 @@
 <template>
   <ul>
-    <!--  -->
+    <!-- click 할때 $emit('input', item)을 넘기면서 클릭한 item의 데이타를 v-model에 넘겨준다. -->
     <li 
       v-for="(item, key) in items"
       :key="key"
@@ -33,6 +33,8 @@ export default {
   },
   created() {
     console.log('Webzine component');
+  },
+  methods: {
   }
 }
 </script>

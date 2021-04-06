@@ -34,8 +34,7 @@ export default {
   },
   created() {
     console.log('Table component');
-  }
-
+  },
 }
 </script>
 
