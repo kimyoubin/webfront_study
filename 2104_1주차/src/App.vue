@@ -4,7 +4,7 @@
     <!-- 
       3. button을 클릭할때마다 changeList()가 string값을 인자값으로 넘겨준다.
       여기서 listType을 자식컴포넌트인 YoubinList/index.vue에게 :type이라는 이름으로 바인딩해준다.
-      그래서 클릭할때마다 string값에 따라 YoubinList/index.vue에서 걸어준 v-if에 맞춰 보여지는것임. 
+      그래서 클릭할때마다 string값에 따라 YoubinList/index.vue에서 걸어준 v-if에 맞춰 보여지는것임.. 
     -->
     <ul class="btn-area">
       <li><button @click="changeList('gallery')">갤러리형</button></li>
