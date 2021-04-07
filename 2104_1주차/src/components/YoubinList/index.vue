@@ -13,7 +13,10 @@
         2. 각각의 컴포넌트를 부른 뒤 컴포넌트 type이 일치할때마다 보일 수 있게 v-if문을 걸어준다. 
       -->
       <!-- 
-        5. 자식 컴포넌트에서 받은 input이벤트를 @input으로 받아 modalData와 함께 $emit으로 부모에게 한번 더 전달해준다.
+        4. 각각의 컴포넌트에 app.vue에서 바인딩한 type을 props해준다.
+      -->
+      <!-- 
+        6. 자식 컴포넌트에서 받은 input이벤트를 @input으로 받아 modalData와 함께 $emit으로 부모에게 한번 더 전달해준다.
       -->
       <youbin-gallery 
         v-if="type === 'gallery'"
