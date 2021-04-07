@@ -11,9 +11,13 @@
     </thead>
     <tbody>
       <!-- 
-        @click
-        1. 'input' : input이벤트를 부모에게 item과 함께 전달해준다. 
-        2. 'click' : modal을 띄위기 위한 click이벤트를 부모에게 전달시킨다.
+        1. 각 컴포넌트에 v-for를 사용하여 app.vue에 있는 data를 불러온다. 
+      -->
+
+      <!-- 
+        4. 클릭할때마다 modal을 띄우기 위한 @click이벤트를 $emit으로 걸어준다.        
+          - 'input' : input이벤트를 부모에게 item과 함께 전달해준다. 
+          - 'click' : modal을 띄위기 위한 이벤트를 부모에게 전달시킨다.
       -->
       <tr 
         v-for="(item, key) in items"

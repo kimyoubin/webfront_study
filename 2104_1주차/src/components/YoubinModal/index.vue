@@ -1,4 +1,5 @@
 <template>
+  <!--  -->
   <div 
     @click.self="$emit('close')"
     class="modal">

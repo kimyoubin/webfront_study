@@ -10,27 +10,30 @@
     -->
     <keep-alive>
       <!-- 
-        3. 자식에서 전달해준 input이벤트를 @input으로 받아 modalData와 함께 부모로 전달한다. 
+        2. 각각의 컴포넌트를 부른 뒤 컴포넌트 type이 일치할때마다 보일 수 있게 v-if문을 걸어준다. 
+      -->
+      <!-- 
+        5. 자식 컴포넌트에서 받은 input이벤트를 @input으로 받아 modalData와 함께 $emit으로 부모에게 한번 더 전달해준다.
       -->
       <youbin-gallery 
+        v-if="type === 'gallery'"
+        :items="items"
         v-model="modalData"
         @input="$emit('input', modalData)"
-        :items="items"
-        v-if="type === 'gallery'"
         @click="$emit('click')" />
 
       <youbin-table
+        v-else-if="type === 'table'"
+        :items="items"
         v-model="modalData"
         @input="$emit('input', modalData)"
-        :items="items"
-        v-else-if="type === 'table'"
         @click="$emit('click')" />
 
       <youbin-webzine
+        v-else-if="type === 'webzine'"
+        :items="items"
         v-model="modalData"
         @input="$emit('input', modalData)"
-        :items="items"
-        v-else-if="type === 'webzine'"
         @click="$emit('click')" />
     </keep-alive> 
   </div>
