@@ -12,7 +12,7 @@
       <li><button @click="changeList('webzine')">웹진형</button></li>
     </ul>   
 
-    <!-- 
+    <!--
       6. 자식에게 받은 modalData를 v-model="modalData"로 연결시켜 준다.
     -->
     <youbin-list
@@ -31,6 +31,7 @@
       <dl>
         <dt>제목 : {{ modalData.title }}</dt>
         <dd>작성자 : {{ modalData.writer }}</dd>
+        <dd>조회수 : {{ modalData.views }}</dd>
         <dd><img :src="modalData.src"></dd>
       </dl>
     </youbin-modal>
@@ -59,7 +60,7 @@ export default {
           title: '유빈 리스트입니다',
           writer: '유빈',
           date: '2021-04-01',
-          views: '12314',
+          views: 1,
           src: require('@/assets/images/1.jpg'),
           alt: '하연이1',
           mark: '1'
@@ -69,7 +70,7 @@ export default {
           title: '뷰를 공부하고있습니당',
           writer: '유빈',
           date: '2021-07-05',
-          views: '2445',
+          views: 10,
           src: require('@/assets/images/2.jpg'),
           alt: '하연이2',
           mark: '2'
@@ -79,7 +80,7 @@ export default {
           title: '이번 과제는 너무 어렵네요ㅠㅠ',
           writer: '유빈',
           date: '2021-10-06',
-          views: '765',
+          views: 20,
           src: require('@/assets/images/3.jpg'),
           alt: '하연이3',
           mark: '3'
@@ -89,7 +90,7 @@ export default {
           title: '배움은 끝이 없어요...',
           writer: '유빈',
           date: '2021-10-30',
-          views: '45678',
+          views: 30,
           src: require('@/assets/images/4.jpg'),
           alt: '하연이4',
           mark: '4'
@@ -99,7 +100,7 @@ export default {
           title: '졸립다ㅠㅠ',
           writer: '유빈',
           date: '2021-05-05',
-          views: '67',
+          views: 40,
           src: require('@/assets/images/5.jpg'),
           alt: '하연이5',
           mark: '5'
@@ -116,6 +117,16 @@ export default {
     modalClose: function () {
       this.modalActive = false
     },
+  },
+
+  // 감시할 데이터를 지정하고 그 데이터가 바뀌면 함수를 실행함 
+  // vue 인스턴스의 데이터 변경을 관찰하고 이에 반응함
+  watch: {
+    // 조회수 올리기
+    // v-model="modalData"로 연결 된 modalData함수가 팝업을 클릭릭할때마다 views가 ++된다.
+    modalData: function () {
+      ++this.modalData.views;
+    }
   }
 }
 </script>
@@ -149,6 +160,15 @@ export default {
     &:nth-child(3) {
       button {
         background-color: #199fff;
+      }
+    }
+    &:nth-child(4) {
+      position: fixed;
+      right: 0;
+      top: 0;
+      z-index: 9999;
+      button {
+        background-color: #00c947;
       }
     }
   }
