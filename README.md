@@ -29,22 +29,18 @@
     
 ### 4st
 
-    ```
     커스텀 인풋세트 구현 
-    input(text, password, email),
-    selectbox,
-    textarea
-    ```
+    1. input(text, password, email),
+    2. selectbox,
+    3. textarea
     
 ### 5st
     
-    ```
     타입에 따라 gallery, list, webzine 스타일을 가지는 리스트 컴포넌트 구현
     1. 리스트 컴포넌트에 들어갈 Model 설계
     2. Model은 gallery, list, webzine에 모두 대응
     3. gallery, list, webzine의 전환 버튼을 구현하여 실시간으로 변경
     4. 리스트 클릭시 model창 구현
-    ```
     
 ### 6st
     
@@ -52,11 +48,9 @@
     
 ### 7st
     
-    ```
     MyTodo 서비스 구현
     store 모듈 사용
     상태저장은 Vuex를 사용하며 실제 스토리지는 localStorage를 이용하여 상태를 저장한다
-    ```
     
     
     
