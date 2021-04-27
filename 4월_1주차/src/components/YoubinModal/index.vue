@@ -1,13 +1,15 @@
 <template>
-  <div 
-    @click.self="$emit('close')"
-    class="modal">
-    <div class="modal-content">
-      <button
-        @click="$emit('close')">닫기</button>
-      <slot></slot>
+  <transition name="modal" appear>
+    <div 
+      @click.self="$emit('close')"
+      class="modal">
+      <div class="modal-box">
+        <button
+          @click="$emit('close')">닫기</button>
+        <slot></slot>
+      </div>
     </div>
-  </div>
+  </transition> 
 </template>
 
 <script>
@@ -45,7 +47,7 @@ export default {
   justify-content: center;
   align-items: center;
   z-index: 100;
-  .modal-content {
+  .modal-box {
     position: relative;    
     padding: 50px 30px 30px;
     background-color: #fff;
@@ -72,6 +74,27 @@ export default {
       }
     }
 
+  }
+}
+
+.modal-enter-active, .modal-leave-active {
+  transition: opacity 0.3s;
+
+  .modal-box {
+    transition: opacity 0.3s, transform 0.3s;
+  }
+}
+
+.modal-leave-active {
+  transition: opacity 0.3s ease;
+}
+
+.modal-enter, .modal-leave-to {
+  opacity: 0;
+
+  .modal-box {
+    opacity: 0;
+    transform: translateY(-10px);
   }
 }
 </style>

@@ -1,41 +1,41 @@
 <template>
-  <div id="app">
+  <div id="app">    
+    <div class="wrap">
+       <!-- 
+        3. button을 클릭할때마다 changeList()가 string값을 인자값으로 넘겨준다.
+        여기서 listType을 자식컴포넌트인 YoubinList/index.vue에게 :type이라는 이름으로 바인딩해준다.
+        그래서 클릭할때마다 string값에 따라 YoubinList/index.vue에서 걸어준 v-if에 맞춰 보여지는것임 
+      -->
+      <ul class="btn-area">
+        <li><button @click="changeList('gallery')">갤러리형</button></li>
+        <li><button @click="changeList('table')">테이블형</button></li>
+        <li><button @click="changeList('webzine')">웹진형</button></li>
+      </ul>   
 
-    <!-- 
-      3. button을 클릭할때마다 changeList()가 string값을 인자값으로 넘겨준다.
-      여기서 listType을 자식컴포넌트인 YoubinList/index.vue에게 :type이라는 이름으로 바인딩해준다.
-      그래서 클릭할때마다 string값에 따라 YoubinList/index.vue에서 걸어준 v-if에 맞춰 보여지는것임 
-    -->
-    <ul class="btn-area">
-      <li><button @click="changeList('gallery')">갤러리형</button></li>
-      <li><button @click="changeList('table')">테이블형</button></li>
-      <li><button @click="changeList('webzine')">웹진형</button></li>
-    </ul>   
+      <!--
+        7. 자식에게 받은 modalData를 v-model="modalData"로 연결시켜 준다.
+      -->
+      <youbin-list
+        :type="listType" 
+        :items="listData" 
+        v-model="modalData" 
+        @click="modalActive = true"
+      ></youbin-list>
 
-    <!--
-      7. 자식에게 받은 modalData를 v-model="modalData"로 연결시켜 준다.
-    -->
-    <youbin-list
-      :type="listType" 
-      :items="listData" 
-      v-model="modalData" 
-      @click="modalActive = true"
-    ></youbin-list>
-
-    <!-- 
-      8. <youbin-list />에서 연결한 v-model="modalData"로 리스트를 클릭할때마다 팝업에 각각의 item의 data가 들어가게 된다.
-    -->
-    <youbin-modal
-      v-if="modalActive"
-      @close="modalClose">
-      <dl>
-        <dt>제목 : {{ modalData.title }}</dt>
-        <dd>작성자 : {{ modalData.writer }}</dd>
-        <dd>조회수 : {{ modalData.views }}</dd>
-        <dd><img :src="modalData.src"></dd>
-      </dl>
-    </youbin-modal>
-
+      <!-- 
+        8. <youbin-list />에서 연결한 v-model="modalData"로 리스트를 클릭할때마다 팝업에 각각의 item의 data가 들어가게 된다.
+      -->
+      <youbin-modal
+        v-if="modalActive"
+        @close="modalClose">
+        <dl>
+          <dt>제목 : {{ modalData.title }}</dt>
+          <dd>작성자 : {{ modalData.writer }}</dd>
+          <dd>조회수 : {{ modalData.views }}</dd>
+          <dd><img :src="modalData.src"></dd>
+        </dl>
+      </youbin-modal>
+    </div>
   </div>
 </template>
 
@@ -60,7 +60,7 @@ export default {
           title: '유빈 리스트입니다',
           writer: '유빈',
           date: '2021-04-01',
-          views: 1,
+          views: 0,
           src: require('@/assets/images/1.jpg'),
           alt: '하연이1',
           mark: '1'
@@ -70,7 +70,7 @@ export default {
           title: '뷰를 공부하고있습니당',
           writer: '유빈',
           date: '2021-07-05',
-          views: 10,
+          views: 0,
           src: require('@/assets/images/2.jpg'),
           alt: '하연이2',
           mark: '2'
@@ -80,7 +80,7 @@ export default {
           title: '이번 과제는 너무 어렵네요ㅠㅠ',
           writer: '유빈',
           date: '2021-10-06',
-          views: 20,
+          views: 0,
           src: require('@/assets/images/3.jpg'),
           alt: '하연이3',
           mark: '3'
@@ -90,7 +90,7 @@ export default {
           title: '배움은 끝이 없어요...',
           writer: '유빈',
           date: '2021-10-30',
-          views: 30,
+          views: 0,
           src: require('@/assets/images/4.jpg'),
           alt: '하연이4',
           mark: '4'
@@ -100,7 +100,7 @@ export default {
           title: '졸립다ㅠㅠ',
           writer: '유빈',
           date: '2021-05-05',
-          views: 40,
+          views: 0,
           src: require('@/assets/images/5.jpg'),
           alt: '하연이5',
           mark: '5'
@@ -132,6 +132,13 @@ export default {
 </script>
 
 <style scoped lang="scss">
+#app {
+  background-color: #ebebeb;
+}
+.wrap {
+  max-width: 720px;
+  margin: 0 auto;
+}
 .index {
   padding: 30px;
 }
@@ -142,10 +149,8 @@ export default {
     button {
       width: 100px;
       height: 35px;
-      margin-right: 15px;
       color: #fff;
       font-weight: bold;
-      border-radius: 13px;
     }
     &:nth-child(1) {
       button {
