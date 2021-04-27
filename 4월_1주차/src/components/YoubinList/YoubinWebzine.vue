@@ -51,17 +51,37 @@ export default {
 ul {
   display: flex;
   justify-content: space-between;
+  flex-wrap: wrap;
   font-size: 14px;
   li {
     position: relative;
-    width: calc((100% - 100px) / 5);
-    border-radius: 30px;
+    width: 48%;
+    margin-bottom: 30px;
     overflow: hidden;
     cursor: pointer;
     transition: all .4s;
+    &::before {
+      content: '';
+      display: block;
+      position: absolute;
+      width: 100%;
+      height: 35%;
+      background: linear-gradient(0, rgba(0, 0, 0, 0), rgba(0, 0, 0, .5));
+    }
     &:hover {
-      transform: translateY(-10px);
-      box-shadow: 10px 10px 15px rgba(0,0,0,.3);
+      &::after {
+        content: '';
+        display: block;
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        border: 4px solid #199fff;
+        
+      }
     }
     .img-area {
       width: 100%;

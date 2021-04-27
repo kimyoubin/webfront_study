@@ -132,9 +132,6 @@ export default {
 </script>
 
 <style scoped lang="scss">
-#app {
-  background-color: #ebebeb;
-}
 .wrap {
   max-width: 720px;
   margin: 0 auto;

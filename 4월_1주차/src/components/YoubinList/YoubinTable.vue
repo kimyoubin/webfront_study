@@ -54,12 +54,12 @@ table {
   font-size: 14px;
   text-align: center;
   border-collapse: collapse;
-  border-top: 1px solid #000;
-  border-left: 1px solid #000;
+  border-top: 1px solid #b4b4b4;
+  border-left: 1px solid #b4b4b4;
   th, td {
-    padding: 10px;
-    border-right: 1px solid #000; 
-    border-bottom: 1px solid #000; 
+    height: 70px;
+    border-right: 1px solid #b4b4b4; 
+    border-bottom: 1px solid #b4b4b4; 
   }
   th {
     background-color: #f3f3f3;
