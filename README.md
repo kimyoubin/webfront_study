@@ -72,7 +72,7 @@
     ```
     
     1. store 모듈 사용
-    2. 상태저장은 Vuex를 사용하며 실제 스토리지는 localStorage를 이용하여 상태 저장
+    2. 상태저장은 Vuex를 사용하며 실제 스토리지는 localStorage를 이용하여 상태 저장.
     
     ```
     
